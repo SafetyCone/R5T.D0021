@@ -1,0 +1,4 @@
+R5T.D0021.Default - Default implementations library IXDocumentVisualStudioProjectFileSerializer service, async, stringly-typed paths.
+
+Goals
+
