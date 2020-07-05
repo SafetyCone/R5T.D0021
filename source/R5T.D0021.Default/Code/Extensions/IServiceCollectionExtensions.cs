@@ -77,5 +77,45 @@ namespace R5T.D0021.Default
 
             return serviceAction;
         }
+
+
+
+        /// <summary>
+        /// Adds the <see cref="XDocumentVisualStudioProjectFileSerializer"/> implementation of <see cref="IXDocumentVisualStudioProjectFileSerializer"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static IServiceCollection AddAsFilePathXDocumentVisualStudioProjectFileSerializer(this IServiceCollection services,
+            IServiceAction<IRelativePathsXDocumentVisualStudioProjectFileStreamSerializer> relativePathsXDocumentVisualStudioProjectFileStreamSerializerAction,
+            IServiceAction<IFunctionalVisualStudioProjectFileSerializationModifier> functionalVisualStudioProjectFileSerializationModifierAction,
+            IServiceAction<IMessageSink> messageSinkAction,
+            IServiceAction<IVisualStudioProjectFileXDocumentPrettifier> visualStudioProjectFileXDocumentPrettifierAction)
+        {
+            services
+                .AddSingleton<IAsFilePathXDocumentVisualStudioProjectFileSerializer, AsFilePathXDocumentVisualStudioProjectFileSerializer>()
+                .Run(relativePathsXDocumentVisualStudioProjectFileStreamSerializerAction)
+                .Run(functionalVisualStudioProjectFileSerializationModifierAction)
+                .Run(messageSinkAction)
+                .Run(visualStudioProjectFileXDocumentPrettifierAction)
+                ;
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="XDocumentVisualStudioProjectFileSerializer"/> implementation of <see cref="IXDocumentVisualStudioProjectFileSerializer"/> as a <see cref="ServiceLifetime.Singleton"/>.
+        /// </summary>
+        public static IServiceAction<IAsFilePathXDocumentVisualStudioProjectFileSerializer> AddAsFilePathXDocumentVisualStudioProjectFileSerializerAction(this IServiceCollection services,
+            IServiceAction<IRelativePathsXDocumentVisualStudioProjectFileStreamSerializer> relativePathsXDocumentVisualStudioProjectFileStreamSerializerAction,
+            IServiceAction<IFunctionalVisualStudioProjectFileSerializationModifier> functionalVisualStudioProjectFileSerializationModifierAction,
+            IServiceAction<IMessageSink> messageSinkAction,
+            IServiceAction<IVisualStudioProjectFileXDocumentPrettifier> visualStudioProjectFileXDocumentPrettifierAction)
+        {
+            var serviceAction = ServiceAction.New<IAsFilePathXDocumentVisualStudioProjectFileSerializer>(() => services.AddXDocumentVisualStudioProjectFileSerializerAction(
+                relativePathsXDocumentVisualStudioProjectFileStreamSerializerAction,
+                functionalVisualStudioProjectFileSerializationModifierAction,
+                messageSinkAction,
+                visualStudioProjectFileXDocumentPrettifierAction));
+
+            return serviceAction;
+        }
     }
 }
