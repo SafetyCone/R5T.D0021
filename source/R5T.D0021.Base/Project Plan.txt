@@ -1,0 +1,4 @@
+R5T.D0021 - Base definitions library IXDocumentVisualStudioProjectFileSerializer service, async, stringly-typed paths.
+
+Goals
+
