@@ -69,7 +69,7 @@ namespace R5T.D0021.Default
             IServiceAction<IMessageSink> messageSinkAction,
             IServiceAction<IVisualStudioProjectFileXDocumentPrettifier> visualStudioProjectFileXDocumentPrettifierAction)
         {
-            var serviceAction = ServiceAction.New<IXDocumentVisualStudioProjectFileSerializer>(() => services.AddXDocumentVisualStudioProjectFileSerializerAction(
+            var serviceAction = ServiceAction.New<IXDocumentVisualStudioProjectFileSerializer>(() => services.AddXDocumentVisualStudioProjectFileSerializer(
                 relativePathsXDocumentVisualStudioProjectFileStreamSerializerAction,
                 functionalVisualStudioProjectFileSerializationModifierAction,
                 messageSinkAction,
