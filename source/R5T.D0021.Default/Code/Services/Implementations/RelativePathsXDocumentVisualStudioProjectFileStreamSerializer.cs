@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using R5T.D0001;
 using R5T.D0010;
 using R5T.T0004;
+using R5T.T0064;
 
 using R5T.Magyar.Xml;
 
 
 namespace R5T.D0021.Default
 {
-    public class RelativePathsXDocumentVisualStudioProjectFileStreamSerializer : IRelativePathsXDocumentVisualStudioProjectFileStreamSerializer
+    [ServiceImplementationMarker]
+    public class RelativePathsXDocumentVisualStudioProjectFileStreamSerializer : IRelativePathsXDocumentVisualStudioProjectFileStreamSerializer, IServiceImplementation
     {
         private INowUtcProvider NowUtcProvider { get; }
 

@@ -1,17 +1,18 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 using R5T.D0010;
 using R5T.D0017;
 using R5T.D0022;
 using R5T.T0004;
-
-using R5T.Magyar.IO;
+using R5T.T0064;
 
 
 namespace R5T.D0021.Default
 {
-    public class AsFilePathXDocumentVisualStudioProjectFileSerializer : IAsFilePathXDocumentVisualStudioProjectFileSerializer
+    [ServiceImplementationMarker]
+    public class AsFilePathXDocumentVisualStudioProjectFileSerializer : IAsFilePathXDocumentVisualStudioProjectFileSerializer, IServiceImplementation
     {
         private IRelativePathsXDocumentVisualStudioProjectFileStreamSerializer RelativePathsXDocumentVisualStudioProjectFileStreamSerializer { get; }
         private IFunctionalVisualStudioProjectFileSerializationModifier FunctionalVisualStudioProjectFileSerializationModifier { get; }
