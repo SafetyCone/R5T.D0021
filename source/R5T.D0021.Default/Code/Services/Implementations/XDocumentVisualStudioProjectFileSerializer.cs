@@ -32,7 +32,7 @@ namespace R5T.D0021.Default
             this.ProjectXElementPrettifier = projectXElementPrettifier;
         }
 
-        public async Task<XDocumentVisualStudioProjectFile> DeserializeAsync(string projectFilePath)
+        public async Task<XDocumentVisualStudioProjectFile> Deserialize(string projectFilePath)
         {
             using (var fileStream = FileStreamHelper.NewRead(projectFilePath))
             {
@@ -45,7 +45,7 @@ namespace R5T.D0021.Default
             }
         }
 
-        public async Task SerializeAsync(string projectFilePath, XDocumentVisualStudioProjectFile xElementVisualStudioProjectFile, bool overwrite = true)
+        public async Task Serialize(string projectFilePath, XDocumentVisualStudioProjectFile xElementVisualStudioProjectFile, bool overwrite = true)
         {
             // Modify.
             var modifiedXElementVisualStudioProjectFile = await this.FunctionalVisualStudioProjectFileSerializationModifier.ModifySerializationAsync(xElementVisualStudioProjectFile, projectFilePath, this.MessageSink);
